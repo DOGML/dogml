@@ -1,0 +1,23 @@
+{
+	"name": "dogml-monorepo",
+	"version": "0.0.1",
+	"description": "monorepo for @dogml/core and friends",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"test": "pnpm test -r --filter=./packages/* --filter=!./packages/create-svelte",
+		"test:cross-platform:dev": "pnpm run --dir packages/kit test:cross-platform:dev",
+		"test:cross-platform:build": "pnpm run --dir packages/kit test:cross-platform:build",
+		"test:vite-ecosystem-ci": "pnpm test --dir packages/kit",
+		"check": "pnpm -r prepublishOnly && pnpm -r check",
+		"lint": "pnpm -r lint && eslint 'packages/**/*.js'",
+		"format": "pnpm -r format",
+		"precommit": "pnpm format && pnpm lint",
+		"release": "changeset publish",
+		"start": "cd sites/dogml.com && npm run dev"
+	},
+	"packageManager": "pnpm@8.6.0",
+	"engines": {
+		"pnpm": "^8.0.0"
+	}
+}
